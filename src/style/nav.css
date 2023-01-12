@@ -1,6 +1,16 @@
-.ul-elements li{
-    display: inline-block;
-    margin: 10px 20px;
+.subtopics ul {
+    display: flex;
+    justify-content: space-around;
 }
+.subtopics li{
+    display: block;
+    font-weight: bold;
+}
+.subtopics li a{
+    text-decoration: none;
+    color: white;
+    margin: 5px;
+}
+
 
 
