@@ -1,83 +1,97 @@
-import { buildQueries } from '@testing-library/react';
-import React, { Component } from 'react';
-
+import React from 'react';
 import menu from '../image/more.png';
+import close from '../image/close.png';
+import { useState } from 'react';
+import back from '../image/background.jpg';
 
 
-class App extends React.Component{
+const elements = ['Science', 'Technology', 'Health', 'Business', 'Entertainment', 'Sports'];
+const title = elements.map
+  (
+    (element) =>
+      <li>
+        <a href='#' >{element}</a>
+      </li>
+  );
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      count: 0
-    };
+function App() {
+
+  const [value, setValue] = useState(0);
+  const [style, setStyle] = useState();
+  const[boot,setBoot] = useState("bg-warning");
+
+  const btnOpen = [
+    <button onClick={handleOpen}>
+      <img src={menu} />
+    </button>
+  ];
+
+  const btnClose = [
+    <button onClick={handleClose}>
+      <img src={close} />
+    </button>
+  ];
+
+  function handleOpen() {
+    setValue(1);
+    setStyle({ display: 'block' });
+    setBoot("bg-light");
   }
 
-  render() {
-    
-    const headings = ['Science','Technology','Sports','Business','Entertainment','Politics'];
-    const elements = headings.map(topic=>
-      <a href='#'>
-        <center>{topic}</center>
-      </a>
-    );
-    
-    // NavBar
-    function Nav() {
-      return(
-        <div>
-          <h1 className='m-0'>
-            <center className="bg-dark text-light p-3" >
-              The <span className='text-warning' >News</span> App
-            </center>
-          </h1>
-        </div>
-      );
-    }
+  function handleClose() {
+    setValue(0);
+    setStyle({ display: 'hidden' });
+  }
 
-     // handleSideBar
-     function handleSideBar() {
-      
-     }
-
-    // SubNav
-    function SubNav() {
-      return(
-        <div  id='subnav'>
-          
-          <aside>
-            <button onClick={handleSideBar}>
-              <h1></h1>
-              <img src={menu}/>
-            </button>
-          </aside>
-        </div>
-      );
-    }
-
-    // sideBar
-    function SideBar() {
-      return(
-        <div className='sidebar bg-light' >
-
-          {/* get values from Array (headings) */}
-          <ul >
-            <li>{elements}</li>
-          </ul>
-        </div>
-      );
-    }
-
-    // Main Return
-    return(
+  function Nav() {
+    return (
       <div>
-        <Nav/>
-        <SubNav/>
-        <SideBar/>
-     </div>
+        <h1 className='m-0'>
+          <center className="bg-dark text-light p-3" >
+            The <span className='text-warning' >News</span> App
+          </center>
+        </h1>
+      </div>
+    );
+  }
+
+  // SideBar
+  function SideBar() {
+    return (
+      <div className='SideBar'>
+
+        <nav className='buttonBox bg-warning p-2'>
+          {value == 0 ? btnOpen : btnClose}
+        </nav>
+
+        <center className={boot} style={style} id='topics'>
+          {
+            <ul>{title}</ul>
+          }
+        </center>
+      </div>
     )
   }
-}
 
+
+  // news Content
+  function NewsContainer(){
+    return(
+      <div className='newscontent container-fluid  p-1 m-0'>
+          <div className='rounded' >
+            <img src={back}/>
+          </div>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+          <Nav/>  
+          <SideBar/>
+          <NewsContainer/>
+    </div>
+  );
+}
 
 export default App;

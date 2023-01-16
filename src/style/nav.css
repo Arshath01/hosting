@@ -1,34 +1,49 @@
 /* mobile View */
 
 @media only screen and (max-width:600px){
-    aside img{
+    
+    .SideBar  img {
         width: 20px;
     }
-    
-    aside button {
+    .buttonBox {
+        display: ;
+    }
+    .SideBar button {
         background-color: transparent;
         padding: 0;
-        float: right;
+        margin: 3px;
+        display: flex;
+        justify-content: end;
         border: none;
-        margin-right: 10px;
         margin-bottom: 0;
     }
     
-    .sidebar li{
-        display:block;
-        font-weight: 500;
-        margin: 0px;
+    #topics {
+        display: none;
+        
     }
-    .sidebar a{
+    #topics a{
         text-decoration: none;
         color: black;
     }
     
-    .sidebar center {
+    #topics li {
+        display: block;
         margin-bottom: 8px;
         margin-right: 30px;
+        font-weight: 500;
         padding: 10px;
-        border-bottom: 1px solid grey;
+        border-bottom: 1px solid gray;
+    }
+
+    .newscontent div{
+        width: 95%;
+        margin-left: 2.5%;
+        margin: 10px;
+        background-color: blue;
+    }
+    .newscontent img{
+       width: 100%;
     }
     
 }
@@ -36,21 +51,35 @@
 /* Desktop View*/
 @media only screen and (min-width:601px){
 
-    aside{
+    .SideBar nav {
         display: none;
     }
-    #subnav{
+    .SideBar button{
         display: none;
     }
-    .sidebar li{
+    
+    #topics ul{
+        margin: 0;
         display: flex;
         justify-content: space-around;
     }
-    .sidebar a{
+    #topics li{
+        display: block;
+        margin: 10px;
+    }
+    #topics{
+        display: block;
+    }
+    #topics a{
         text-decoration: none;
         color: black;
         font-weight: 500;
         padding: 10px;
     }
+    .newscontent img{
+        width: 100%;
+     }
 }
+
+
 
